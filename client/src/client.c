@@ -66,7 +66,7 @@ t_log* iniciar_logger(void)
 	t_log* nuevo_logger = log_create ("tp0.log", "Cliente", true, LOG_LEVEL_INFO);
 
 	if (nuevo_logger == NULL){
-		abort();
+		error_show("No se pudo inicar el logger en cliente");
 	}
 
 	return nuevo_logger;
@@ -77,7 +77,7 @@ t_config* iniciar_config(void)
 	t_config* nuevo_config = config_create("cliente.config");
 
 	if (nuevo_config == NULL){
-		abort();
+		error_show("No se pudo iniciar la config en cliente");
 	}
 
 	return nuevo_config;

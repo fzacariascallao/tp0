@@ -9,6 +9,8 @@
 #include<netdb.h>
 #include<string.h>
 #include<commons/log.h>
+#include<commons/error.h>
+#include<errno.h>
 
 typedef enum
 {

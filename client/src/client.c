@@ -1,6 +1,6 @@
 #include "client.h"
 
-int main(void)
+int main(int argc, char** argv)
 {
 	/*---------------------------------------------------PARTE 2-------------------------------------------------------------*/
 
@@ -24,7 +24,7 @@ int main(void)
 
 	/* ---------------- ARCHIVOS DE CONFIGURACION ---------------- */
 
-	config = iniciar_config();
+	config = iniciar_config(argv[1]);
 
 	// Usando el config creado previamente, leemos los valores del config y los 
 	// dejamos en las variables 'ip', 'puerto' y 'valor'
@@ -33,7 +33,7 @@ int main(void)
 	puerto = config_get_string_value(config, "PUERTO");
 	clave = config_get_string_value(config, "CLAVE");
 
-	// Loggeamos el valor de config
+	// Loggeamos el valor de config()
 
 	log_info(logger, "IP: %s, Puerto: %s, Clave:%s", ip, puerto, clave);
 
@@ -72,9 +72,9 @@ t_log* iniciar_logger(void)
 	return nuevo_logger;
 }
 
-t_config* iniciar_config(void)
+t_config* iniciar_config(char* config)
 {
-	t_config* nuevo_config = config_create("cliente.config");
+	t_config* nuevo_config = config_create(config);
 
 	if (nuevo_config == NULL){
 		error_show("No se pudo iniciar la config en cliente");
